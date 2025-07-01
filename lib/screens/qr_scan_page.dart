@@ -24,17 +24,25 @@ class _QrScanPageState extends State<QrScanPage> {
 
   void _onDetect(BarcodeCapture capture) {
     final Barcode? barcode = capture.barcodes.first;
-    if (!_scanned && barcode != null && barcode.rawValue != null) {
-      // print(barcode.rawValue!);
+    final value = barcode?.rawValue;
+    if (!_scanned && barcode != null && value != null) {
       setState(() {
         _scanned = true;
       });
 
-      Navigator.pushReplacementNamed(
-        context,
-        AppRoutes.scannedResult,
-        arguments: {'result': barcode.rawValue},
-      );
+      if (isImageUrl(value)) {
+        Navigator.pushReplacementNamed(
+          context,
+          AppRoutes.showImageFromUrl,
+          arguments: {'url': value},
+        );
+      } else {
+        Navigator.pushReplacementNamed(
+          context,
+          AppRoutes.scannedResult,
+          arguments: {'result': barcode.rawValue},
+        );
+      }
     }
   }
 
