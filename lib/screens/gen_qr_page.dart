@@ -41,7 +41,7 @@ class _GenQrPageState extends State<GenQrPage> {
             ),
             const SizedBox(height: 40),
             if (_qrData != null)
-              QrImageView(data: _qrData!, version: QrVersions.auto, size: 150),
+              QrImageView(data: _qrData!, version: QrVersions.auto, size: 300),
           ],
         ),
       ),
