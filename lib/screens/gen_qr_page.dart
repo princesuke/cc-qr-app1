@@ -10,11 +10,12 @@ class GenQrPage extends StatefulWidget {
 
 class _GenQrPageState extends State<GenQrPage> {
   final _controller = TextEditingController();
+  String? _qrData;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Title')),
+      appBar: AppBar(title: const Text('สร้าง QR Code')),
       body: Padding(
         padding: EdgeInsets.all(24),
         child: Column(
@@ -26,6 +27,21 @@ class _GenQrPageState extends State<GenQrPage> {
                 labelText: 'กรอกข้อความหรือ URL',
               ),
             ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  _qrData =
+                      _controller.text.trim().isEmpty
+                          ? null
+                          : _controller.text.trim();
+                });
+              },
+              child: const Text('สร้าง QR Code'),
+            ),
+            const SizedBox(height: 40),
+            if (_qrData != null)
+              QrImageView(data: _qrData!, version: QrVersions.auto, size: 150),
           ],
         ),
       ),
