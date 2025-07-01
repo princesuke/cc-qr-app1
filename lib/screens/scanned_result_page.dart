@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ScannedResultScreen extends StatelessWidget {
-  const ScannedResultScreen({super.key});
+class ScannedResultPage extends StatelessWidget {
+  const ScannedResultPage({super.key});
 
   @override
   Widget build(BuildContext context) {

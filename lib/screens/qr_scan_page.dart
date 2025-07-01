@@ -11,16 +11,20 @@ class QrScanPage extends StatefulWidget {
 
 class _QrScanPageState extends State<QrScanPage> {
   bool _scanned = false;
-  String text = '';
 
   void _onDetect(BarcodeCapture capture) {
     final Barcode? barcode = capture.barcodes.first;
     if (!_scanned && barcode != null && barcode.rawValue != null) {
-      print(barcode.rawValue!);
+      // print(barcode.rawValue!);
       setState(() {
         _scanned = true;
-        // text = barcode.rawValue!;
       });
+
+      Navigator.pushReplacementNamed(
+        context,
+        AppRoutes.scannedResult,
+        arguments: {'result': barcode.rawValue},
+      );
     }
   }
 
