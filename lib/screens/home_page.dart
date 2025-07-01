@@ -19,6 +19,14 @@ class HomePage extends StatelessWidget {
               icon: const Icon(Icons.qr_code_scanner),
               label: const Text('แสกน QR Code'),
             ),
+            SizedBox(height: 20),
+            ElevatedButton.icon(
+              onPressed: () {
+                Navigator.pushNamed(context, AppRoutes.genQr);
+              },
+              label: const Text('สร้าง QR Code'),
+              icon: const Icon(Icons.qr_code),
+            ),
           ],
         ),
       ),
