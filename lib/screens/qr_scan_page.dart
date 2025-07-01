@@ -2,6 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
 import '../routes/app_routes.dart';
 
+bool isImageUrl(String? url) {
+  if (url == null) return false;
+  return url.startsWith('http') &&
+      (url.contains('.jpg') ||
+          url.contains('.jpeg') ||
+          url.contains('.png') ||
+          url.contains('.gif') ||
+          url.contains('.webp'));
+}
+
 class QrScanPage extends StatefulWidget {
   const QrScanPage({super.key});
 
